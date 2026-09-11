@@ -1,0 +1,10 @@
+FROM postgres:15-alpine
+
+ENV POSTGRES_DB=clyvovet_nexus_db
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=421212
+
+
+COPY script_db.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 5432

@@ -98,7 +98,7 @@ az container create \
   --dns-name-label dbclyvovetnexus566022 \
   --ports 5432 \
   --registry-username acrclyvovetnexus566022 \
-  --registry-password 1sqeCF7kRRgNNwUHM33sP6WPA9Zr4r7JlmVPH5uKcQaOVGBwggFaJQQJ99CIACBsN54Eqg7NAAACAZCR6g1e \
+  --registry-password  \
   --environment-variables POSTGRES_DB=clyvovet_nexus_db POSTGRES_USER=postgres POSTGRES_PASSWORD=421212 \
   --restart-policy Always \
   --os-type Linux \
@@ -114,11 +114,11 @@ az container create \
   --dns-name-label appclyvovetnexus566022 \
   --ports 8080 \
   --registry-username acrclyvovetnexus566022 \
-  --registry-password 1sqeCF7kRRgNNwUHM33sP6WPA9Zr4r7JlmVPH5uKcQaOVGBwggFaJQQJ99CIACBsN54Eqg7NAAACAZCR6g1e \
+  --registry-password  \
   --environment-variables \
     SPRING_DATASOURCE_URL=jdbc:postgresql://dbclyvovetnexus566022.canadacentral.azurecontainer.io:5432/clyvovet_nexus_db \
     SPRING_DATASOURCE_USERNAME=postgres \
-    SPRING_DATASOURCE_PASSWORD=421212 \
+    SPRING_DATASOURCE_PASSWORD= \
   --restart-policy Always \
   --os-type Linux \
   --cpu 2 \

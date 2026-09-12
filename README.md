@@ -10,10 +10,20 @@
 
 
 
+## Descrição da Solução
+
+O **Clyvovet Nexus** é um sistema backend (API RESTful) desenvolvido para otimizar a gestão de clínicas veterinárias. A aplicação permite o cadastro estruturado de **Pets** (identificando espécie, raça e idade) e o gerenciamento de **Eventos Preventivos** (como vacinas, vermifugação, avaliações cardiológicas e profilaxias dentárias). Todo evento preventivo é vinculado ao histórico do animal, possuindo controle exato da data de realização e da data do próximo vencimento, garantindo um acompanhamento de saúde contínuo e centralizado na nuvem.
+
 ---
 
-## Descrição do Projeto
-O Clyvovet Nexus é uma aplicação voltada para a gestão integrada de Pets e Eventos Preventivos, desenvolvida com Java 17, Spring Boot 3.2.5 e PostgreSQL 15. A arquitetura segue o padrão de microsserviços conteinerizados via Docker, implantados na nuvem da Microsoft Azure utilizando Azure Container Registry (ACR) e Azure Container Instances (ACI).
+## Descrição dos Benefícios para o Negócio
+
+A implementação do Clyvovet Nexus resolve problemas operacionais comuns em clínicas veterinárias e traz melhorias estratégicas fundamentais:
+
+* **Fidelização e Retenção de Clientes:** O controle automatizado de "datas de próximo vencimento" permite que a clínica notifique os tutores de forma proativa sobre o momento de retornar para reforços de vacinas ou check-ups anuais, aumentando o retorno financeiro recorrente.
+* **Foco na Saúde Preventiva:** Resolve o problema comum de esquecimento e perda de prazos de vacinação por parte dos tutores, diminuindo a incidência de doenças graves e aumentando a qualidade e expectativa de vida dos animais.
+* **Organização e Centralização:** Substitui fichas de papel, históricos fragmentados ou planilhas locais por um banco de dados relacional robusto e seguro na nuvem, acessível de qualquer lugar.
+* **Escalabilidade e Disponibilidade:** Por utilizar uma arquitetura baseada em containers na Microsoft Azure, a solução garante que o sistema esteja online 24/7, sem travamentos, e pronto para crescer em processamento à medida que a base de clientes da clínica aumenta.
 
 ---
 

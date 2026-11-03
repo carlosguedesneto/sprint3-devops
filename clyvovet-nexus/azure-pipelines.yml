@@ -74,4 +74,4 @@ stages:
               azureSubscription: '$(azureSubscription)'
               appType: 'webApp'
               WebAppName: '$(webAppName)'
-              packageForDeploy: '$(System.ArtifactsDirectory)/drop/*.jar'fix: ajuste do caminho do pom.xml na pipeline
+              packageForDeploy: '$(System.ArtifactsDirectory)/drop/*.jar'

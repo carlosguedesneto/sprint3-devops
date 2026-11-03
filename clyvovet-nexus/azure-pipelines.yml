@@ -1,0 +1,72 @@
+trigger:
+  branches:
+    include:
+      - master
+      - main
+
+variables:
+  azureSubscription: 'Azure-Service-Connection'
+  webAppName: 'app-clyvovet-nexus'
+
+stages:
+- stage: Build_and_Test_CI
+  displayName: 'Stage CI: Build e Testes Automáticos'
+  jobs:
+  - job: BuildJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: JavaToolInstaller@0
+      inputs:
+        versionSpec: '17'
+        jdkArchitectureOption: 'x64'
+        jdkSourceOption: 'PreInstalled'
+
+    - task: Maven@4
+      displayName: 'Maven Clean Test Package'
+      inputs:
+        mavenPomFile: 'pom.xml'
+        goals: 'clean test package'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.17'
+
+    - task: CopyFiles@2
+      displayName: 'Copiar JAR para Staging'
+      inputs:
+        SourceFolder: '$(system.defaultworkingdirectory)/target'
+        Contents: '*.jar'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publicar Artefato no Azure DevOps'
+      inputs:
+        PathtoPublish: '$(build.artifactstagingdirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+- stage: Deploy_CD
+  displayName: 'Stage CD: Deploy Automático no Azure Web App'
+  dependsOn: Build_and_Test_CI
+  condition: succeeded()
+  jobs:
+  - deployment: DeployJob
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'Production'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: DownloadBuildArtifacts@0
+            inputs:
+              buildType: 'current'
+              downloadType: 'single'
+              artifactName: 'drop'
+              downloadPath: '$(System.ArtifactsDirectory)'
+
+          - task: AzureWebApp@1
+            displayName: 'Deploy para o Azure Web App'
+            inputs:
+              azure

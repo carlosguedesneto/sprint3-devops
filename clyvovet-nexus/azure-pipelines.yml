@@ -71,6 +71,6 @@ stages:
             inputs:
               ConnectionType: 'AzureRM'
               azureSubscription: '$(azureSubscription)'
-              appType: 'webApp'
+              appType: 'webAppLinux'
               WebAppName: '$(webAppName)'
-              packageForDeploy: '$(System.ArtifactsDirectory)/drop/*.jar'
+              package: '$(System.ArtifactsDirectory)/drop/*.jar'

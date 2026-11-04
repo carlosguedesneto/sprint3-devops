@@ -25,7 +25,7 @@ class PetServiceTest {
     private PetService petService;
 
     @Test
-    void deveCriarPetComSucesso() {
+    void deveCriarPet() {
         Pet pet = new Pet(null, "Zeus", "Cachorro", "Pastor Alemão", 4);
         Pet petSalvo = new Pet(1L, "Zeus", "Cachorro", "Pastor Alemão", 4);
 
